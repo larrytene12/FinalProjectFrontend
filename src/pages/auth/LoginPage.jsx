@@ -47,7 +47,7 @@ const LoginPage = () => {
 
     } catch (error) {
       console.error("Login Error:", error);
-      alert("Gagal menghubungi server database (Pastikan JSON Server jalan di port 3006).");
+      alert("Gagal menghubungi server database (Pastikan JSON Server jalan di port 3033).");
     } finally {
       setIsLoading(false);
     }

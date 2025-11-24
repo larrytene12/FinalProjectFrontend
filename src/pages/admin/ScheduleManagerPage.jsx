@@ -8,7 +8,7 @@ const ScheduleManagerPage = () => {
   const [form, setForm] = useState({ date: '', time: '', quota: 20 });
 
   const fetchSchedules = () => {
-    fetch('http://localhost:3006/schedules')
+    fetch('http://localhost:3033/schedules')
       .then(res => res.json())
       .then(data => setSchedules(data));
   };
@@ -21,7 +21,7 @@ const ScheduleManagerPage = () => {
 
     const newSchedule = { ...form, filled: 0 }; // Filled mulai dari 0
     
-    await fetch('http://localhost:3006/schedules', {
+    await fetch('http://localhost:3033/schedules', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newSchedule)
@@ -33,7 +33,7 @@ const ScheduleManagerPage = () => {
 
   const handleDelete = async (id) => {
     if(!window.confirm("Hapus jadwal ini?")) return;
-    await fetch(`http://localhost:3006/schedules/${id}`, { method: 'DELETE' });
+    await fetch(`http://localhost:3033/schedules/${id}`, { method: 'DELETE' });
     fetchSchedules();
   };
 
