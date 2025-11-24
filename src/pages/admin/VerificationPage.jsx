@@ -8,7 +8,7 @@ const VerificationPage = () => {
 
   // 1. Ambil Data Student
   const fetchStudents = () => {
-    fetch('http://localhost:3006/users?role=student')
+    fetch('http://localhost:3033/users?role=student')
       .then(res => res.json())
       .then(data => setStudents(data));
   };
@@ -22,7 +22,7 @@ const VerificationPage = () => {
     const newStatus = status === 'verified' ? 'Verified' : 'Rejected';
     
     // Update ke Server
-    await fetch(`http://localhost:3006/users/${selectedStudent.id}`, {
+    await fetch(`http://localhost:3033/users/${selectedStudent.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ 

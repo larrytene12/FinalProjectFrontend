@@ -10,7 +10,7 @@ const ApplicantsPage = () => {
 
   // 1. READ DATA
   const fetchApplicants = () => {
-    fetch('http://localhost:3006/users?role=student')
+    fetch('http://localhost:3033/users?role=student')
       .then(res => res.json())
       .then(data => setApplicants(data))
       .catch(err => console.error(err));
@@ -29,7 +29,7 @@ const ApplicantsPage = () => {
     if (!window.confirm(confirmMsg)) return;
 
     try {
-      await fetch(`http://localhost:3006/users/${id}`, {
+      await fetch(`http://localhost:3033/users/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus })
@@ -45,7 +45,7 @@ const ApplicantsPage = () => {
     if (!window.confirm("Yakin hapus data ini?")) return;
 
     try {
-      await fetch(`http://localhost:3006/users/${id}`, { method: 'DELETE' });
+      await fetch(`http://localhost:3033/users/${id}`, { method: 'DELETE' });
       fetchApplicants();
     } catch (error) {
       alert("Gagal menghapus data");
