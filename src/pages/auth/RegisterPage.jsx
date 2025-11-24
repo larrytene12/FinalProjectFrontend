@@ -1,6 +1,11 @@
+// File: src/pages/auth/RegisterPage.jsx
 
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import Input from '../../components/ui/Input';
+import Button from '../../components/ui/Button';
+import { UserPlus } from 'lucide-react';
+import { APP_CONFIG } from '../../config'; // Import Config
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -24,7 +29,7 @@ const RegisterPage = () => {
 
     try {
       // Cek Email
-      const checkRes = await fetch(`http://localhost:3001/users?email=${formData.email}`);
+      const checkRes = await fetch(`http://localhost:3033/users?email=${formData.email}`);
       const existingUser = await checkRes.json();
 
       if (existingUser.length > 0) {
@@ -43,7 +48,7 @@ const RegisterPage = () => {
         registrationStep: 1 
       };
 
-      await fetch('http://localhost:3001/users', {
+      await fetch('http://localhost:3033/users', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newUser)

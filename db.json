@@ -1,1 +1,132 @@
-{}
+{
+  "users": [
+    {
+      "id": "1",
+      "fullName": "Larry Tene",
+      "email": "siswa@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Teknik Informatika",
+      "status": "Ditolak",
+      "verificationStatus": "Verified",
+      "phone": "081233789078",
+      "address": "unklab",
+      "schoolOrigin": "sma n1",
+      "gradYear": "2019",
+      "registrationStep": 2,
+      "documents": {
+        "ijazah": "https://placehold.co/400x600/png?text=Ijazah+Larry",
+        "foto": "https://placehold.co/400x600/png?text=Foto+Larry"
+      },
+      "paymentStatus": "Unpaid",
+      "examScore": 0,
+      "examStatus": "Belum Ujian",
+      "scheduleId": null
+    },
+    {
+      "id": "c056",
+      "fullName": "Vanessa Vena Febriani Sahetapy",
+      "email": "sahetapyvena@gmail.com",
+      "password": "123456789",
+      "role": "student",
+      "status": "Draft",
+      "registrationStep": 4,
+      "phone": "085396928945",
+      "address": "Ranowangko, Jaga 9, Kabupaten Minahasa",
+      "schoolOrigin": "SMA N 1 TOMBARIRI",
+      "gradYear": "2003",
+      "major": "Teknik Informatika",
+      "documents": {
+        "ijazah": "https://storage.kampus.id/c056/ijazah.jpg",
+        "foto": "https://storage.kampus.id/c056/foto.jpg"
+      },
+      "verificationStatus": "Verified",
+      "paymentStatus": "Paid",
+      "examScore": 80,
+      "examStatus": "Selesai",
+      "scheduleId": "s2"
+    },
+    {
+      "id": "a1",
+      "fullName": "Admin Kampus",
+      "email": "admin@test.com",
+      "password": "admin",
+      "role": "admin",
+      "major": "-",
+      "verificationStatus": "Verified"
+    }
+  ],
+  "schedules": [
+    {
+      "id": "s1",
+      "date": "2024-08-20",
+      "time": "08:00",
+      "quota": 50,
+      "filled": 12
+    },
+    {
+      "id": "s2",
+      "date": "2024-08-21",
+      "time": "10:00",
+      "quota": 50,
+      "filled": 45
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Apa ibu kota Indonesia?",
+      "options": [
+        "Jakarta",
+        "Bandung",
+        "IKN",
+        "Surabaya"
+      ],
+      "answer": "IKN"
+    },
+    {
+      "id": 2,
+      "question": "Berapakah hasil dari 2 + 2 x 2?",
+      "options": [
+        "6",
+        "8",
+        "4",
+        "10"
+      ],
+      "answer": "6"
+    },
+    {
+      "id": 3,
+      "question": "Bahasa pemrograman React dikembangkan oleh?",
+      "options": [
+        "Google",
+        "Facebook (Meta)",
+        "Microsoft",
+        "Amazon"
+      ],
+      "answer": "Facebook (Meta)"
+    },
+    {
+      "id": 4,
+      "question": "Kepanjangan dari HTML adalah?",
+      "options": [
+        "Hyper Text Markup Language",
+        "High Tool Made Language",
+        "Hyper Tool Markup Language",
+        "Hyper Text Main Language"
+      ],
+      "answer": "Hyper Text Markup Language"
+    },
+    {
+      "id": 5,
+      "question": "Di React, untuk menyimpan data dinamis kita menggunakan?",
+      "options": [
+        "Controller",
+        "Props",
+        "State",
+        "Database"
+      ],
+      "answer": "State"
+    }
+  ]
+}

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import Input from '../../components/ui/Input';
+import Button from '../../components/ui/Button';
+import { LogIn } from 'lucide-react';
+import { APP_CONFIG } from '../../config'; 
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -12,44 +16,44 @@ const LoginPage = () => {
     setIsLoading(true);
 
     try {
-      const userRes = await fetch(`http://localhost:3001/users?email=${email}&password=${password}`);
-      const users = await userRes.json();
+      // --- PERBAIKAN LOGIKA DI SINI ---
+      // 1. Gunakan Port 3001 (Port JSON Server kita)
+      // 2. Cari di tabel 'users' saja (karena Admin & Student sekarang jadi satu tabel)
+      const res = await fetch(`http://localhost:3033/users?email=${email}&password=${password}`);
+      const users = await res.json();
 
+      // 3. Cek apakah user ditemukan?
       if (users.length > 0) {
-        const student = users[0];
+        const user = users[0]; // Ambil data user pertama
+
+        // Simpan data sesi standar
         localStorage.setItem('isAuth', 'true');
-        localStorage.setItem('role', 'student');
-        localStorage.setItem('user', JSON.stringify(student)); 
-        
-        alert(`Selamat datang, ${student.fullName}!`);
-        navigate('/student/dashboard');
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('role', user.role); // Penting: Simpan role asli dari DB
+
+        // 4. Cek Role untuk Navigasi (Admin ke Dashboard Admin, Student ke Student)
+        if (user.role === 'admin') {
+            alert(`Login Admin Berhasil: ${user.fullName}`);
+            navigate('/admin/dashboard');
+        } else {
+            alert(`Selamat datang, ${user.fullName}!`);
+            navigate('/student/dashboard');
+        }
         return;
       }
 
-      const adminRes = await fetch(`http://localhost:3001/admins?email=${email}&password=${password}`);
-      const admins = await adminRes.json();
-
-      if (admins.length > 0) {
-        const admin = admins[0];
-        localStorage.setItem('isAuth', 'true');
-        localStorage.setItem('role', 'admin');
-        localStorage.setItem('user', JSON.stringify(admin));
-
-        alert(`Login Admin Berhasil: ${admin.fullName}`);
-        navigate('/admin/dashboard');
-        return;
-      }
-
+      // Jika loop selesai dan tidak ketemu
       alert("Email atau Password salah!");
 
     } catch (error) {
       console.error("Login Error:", error);
-      alert("Gagal menghubungi server.");
+      alert("Gagal menghubungi server database (Pastikan JSON Server jalan di port 3006).");
     } finally {
       setIsLoading(false);
     }
   };
 
+  // --- BAGIAN TAMPILAN (TIDAK ADA YANG DIUBAH, SAMA PERSIS) ---
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center backdrop-blur-sm relative"
