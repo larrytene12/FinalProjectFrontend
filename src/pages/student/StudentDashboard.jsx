@@ -38,13 +38,13 @@ const StudentDashboard = () => {
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-white space-y-4">
                 <div className="inline-block px-4 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-xs font-bold tracking-widest uppercase">
-                    🚀 Student Portal 2.0
+                    UNIVERSITAS KLABAT
                 </div>
                 <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight leading-tight">
                     Halo, <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-pink-300">{user.fullName.split(' ')[0]}</span>!
                 </h1>
                 <p className="text-lg text-indigo-100 font-medium max-w-lg">
-                    Selamat datang di masa depan. Kelola pendaftaran kuliahmu dengan cepat, mudah, dan transparan di sini.
+                    Selamat datang di awal perjalanan barumu. Semua proses pendaftaran kini lebih cepat, mudah, dan transparan.
                 </p>
             </div>
             
@@ -62,7 +62,7 @@ const StudentDashboard = () => {
       {/* 2. MENU GRID: BENTO BOX STYLE */}
       <div>
         <h3 className="text-2xl font-extrabold text-gray-800 mb-6 flex items-center gap-2">
-           <span className="w-2 h-8 bg-purple-600 rounded-full"></span> Misi Pendaftaran
+           <span className="w-2 h-8 bg-purple-600 rounded-full"></span> Pendaftaran
         </h3>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
