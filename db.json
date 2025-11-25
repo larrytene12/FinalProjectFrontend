@@ -1,6 +1,14 @@
 {
   "users": [
     {
+      "id": "a1",
+      "fullName": "Admin Kampus",
+      "email": "admin@test.com",
+      "password": "admin",
+      "role": "admin",
+      "verificationStatus": "Verified"
+    },
+    {
       "id": "1",
       "fullName": "Larry Tene",
       "email": "siswa@test.com",
@@ -21,7 +29,9 @@
       "paymentStatus": "Unpaid",
       "examScore": 0,
       "examStatus": "Belum Ujian",
-      "scheduleId": null
+      "scheduleId": null,
+      "isOnline": false,
+      "cheatCount": 0
     },
     {
       "id": "c056",
@@ -44,16 +54,353 @@
       "paymentStatus": "Paid",
       "examScore": 80,
       "examStatus": "Selesai",
-      "scheduleId": "s2"
+      "scheduleId": "s2",
+      "isOnline": false,
+      "cheatCount": 0
     },
     {
-      "id": "a1",
-      "fullName": "Admin Kampus",
-      "email": "admin@test.com",
-      "password": "admin",
-      "role": "admin",
-      "major": "-",
-      "verificationStatus": "Verified"
+      "id": "mhs-01",
+      "fullName": "Budi Santoso",
+      "email": "budi@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Teknik Informatika",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 0,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-02",
+      "fullName": "Siti Aminah",
+      "email": "siti@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Sistem Informasi",
+      "status": "Diterima",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 5,
+      "examScore": 10
+    },
+    {
+      "id": "mhs-03",
+      "fullName": "Agus Kotak",
+      "email": "agus@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Desain Komunikasi Visual",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 0,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-04",
+      "fullName": "Dewi Persik",
+      "email": "dewi@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Teknik Informatika",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 2,
+      "examScore": 20
+    },
+    {
+      "id": "mhs-05",
+      "fullName": "Eko Patrio",
+      "email": "eko@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Sistem Informasi",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 0,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-06",
+      "fullName": "Fajar Sadboy",
+      "email": "fajar@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Desain Komunikasi Visual",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 10,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-07",
+      "fullName": "Gading Marten",
+      "email": "gading@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Teknik Informatika",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 0,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-08",
+      "fullName": "Hesti Purwadinata",
+      "email": "hesti@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Sistem Informasi",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 1,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-09",
+      "fullName": "Indra Bekti",
+      "email": "indra@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Desain Komunikasi Visual",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 0,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-10",
+      "fullName": "Joko Anwar",
+      "email": "joko@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Teknik Informatika",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 3,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-11",
+      "fullName": "Kevin Sanjaya",
+      "email": "kevin@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Sistem Informasi",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 0,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-12",
+      "fullName": "Luna Maya",
+      "email": "luna@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Desain Komunikasi Visual",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 0,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-13",
+      "fullName": "Maudy Ayunda",
+      "email": "maudy@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Teknik Informatika",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 0,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-14",
+      "fullName": "Nicholas Saputra",
+      "email": "nico@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Sistem Informasi",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 0,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-15",
+      "fullName": "Opick Tomboati",
+      "email": "opick@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Desain Komunikasi Visual",
+      "status": "Proses Seleksi",
+      "verificationStatus": "Verified",
+      "examStatus": "Sedang Ujian",
+      "isOnline": true,
+      "cheatCount": 7,
+      "examScore": 0
+    },
+    {
+      "id": "mhs-16",
+      "fullName": "Prilly Latuconsina",
+      "email": "prilly@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Teknik Informatika",
+      "status": "Diterima",
+      "verificationStatus": "Verified",
+      "examStatus": "Selesai",
+      "isOnline": false,
+      "cheatCount": 0,
+      "examScore": 95
+    },
+    {
+      "id": "mhs-17",
+      "fullName": "Raditya Dika",
+      "email": "radit@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Sistem Informasi",
+      "status": "Diterima",
+      "verificationStatus": "Verified",
+      "examStatus": "Selesai",
+      "isOnline": false,
+      "cheatCount": 0,
+      "examScore": 88
+    },
+    {
+      "id": "mhs-18",
+      "fullName": "Sule Prikitiw",
+      "email": "sule@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Desain Komunikasi Visual",
+      "status": "Diterima",
+      "verificationStatus": "Verified",
+      "examStatus": "Selesai",
+      "isOnline": false,
+      "cheatCount": 0,
+      "examScore": 70
+    },
+    {
+      "id": "mhs-19",
+      "fullName": "Tulus",
+      "email": "tulus@test.com",
+      "password": "123",
+      "role": "student",
+      "major": "Teknik Informatika",
+      "status": "Diterima",
+      "verificationStatus": "Verified",
+      "examStatus": "Selesai",
+      "isOnline": false,
+      "cheatCount": 0,
+      "examScore": 92
+    },
+    {
+      "id": "mhs-20", "fullName": "Uya Kuya", "email": "uya@test.com", "password": "123", "role": "student", "major": "Sistem Informasi", "status": "Ditolak", "verificationStatus": "Verified", "examStatus": "Selesai", "isOnline": false, "cheatCount": 2, "examScore": 60
+    },
+    {
+      "id": "mhs-21", "fullName": "Vino G Bastian", "email": "vino@test.com", "password": "123", "role": "student", "major": "Desain Komunikasi Visual", "status": "Diterima", "verificationStatus": "Verified", "examStatus": "Selesai", "isOnline": false, "cheatCount": 0, "examScore": 85
+    },
+    {
+      "id": "mhs-22", "fullName": "Wulan Guritno", "email": "wulan@test.com", "password": "123", "role": "student", "major": "Teknik Informatika", "status": "Diterima", "verificationStatus": "Verified", "examStatus": "Selesai", "isOnline": false, "cheatCount": 0, "examScore": 78
+    },
+    {
+      "id": "mhs-23", "fullName": "Xabiru", "email": "xabiru@test.com", "password": "123", "role": "student", "major": "Sistem Informasi", "status": "Diterima", "verificationStatus": "Verified", "examStatus": "Selesai", "isOnline": false, "cheatCount": 0, "examScore": 90
+    },
+    {
+      "id": "mhs-24", "fullName": "Yuki Kato", "email": "yuki@test.com", "password": "123", "role": "student", "major": "Desain Komunikasi Visual", "status": "Diterima", "verificationStatus": "Verified", "examStatus": "Selesai", "isOnline": false, "cheatCount": 0, "examScore": 82
+    },
+    {
+      "id": "mhs-25", "fullName": "Zaskia Gotik", "email": "zaskia@test.com", "password": "123", "role": "student", "major": "Teknik Informatika", "status": "Ditolak", "verificationStatus": "Verified", "examStatus": "Selesai", "isOnline": false, "cheatCount": 0, "examScore": 65
+    },
+    {
+      "id": "mhs-26", "fullName": "Ahmad Dhani", "email": "ahmad@test.com", "password": "123", "role": "student", "major": "Sistem Informasi", "status": "Proses Seleksi", "verificationStatus": "Pending", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-27", "fullName": "Bunga Citra Lestari", "email": "bcl@test.com", "password": "123", "role": "student", "major": "Desain Komunikasi Visual", "status": "Proses Seleksi", "verificationStatus": "Pending", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-28", "fullName": "Cakra Khan", "email": "cakra@test.com", "password": "123", "role": "student", "major": "Teknik Informatika", "status": "Ditolak", "verificationStatus": "Rejected", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-29", "fullName": "Desta Mahendra", "email": "desta@test.com", "password": "123", "role": "student", "major": "Sistem Informasi", "status": "Ditolak", "verificationStatus": "Rejected", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-30", "fullName": "Enzy Storia", "email": "enzy@test.com", "password": "123", "role": "student", "major": "Desain Komunikasi Visual", "status": "Proses Seleksi", "verificationStatus": "Pending", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-31", "fullName": "Fiersa Besari", "email": "fiersa@test.com", "password": "123", "role": "student", "major": "Teknik Informatika", "status": "Proses Seleksi", "verificationStatus": "Pending", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-32", "fullName": "Giring Ganesha", "email": "giring@test.com", "password": "123", "role": "student", "major": "Sistem Informasi", "status": "Proses Seleksi", "verificationStatus": "Pending", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-33", "fullName": "Habib Jafar", "email": "habib@test.com", "password": "123", "role": "student", "major": "Desain Komunikasi Visual", "status": "Proses Seleksi", "verificationStatus": "Pending", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-34", "fullName": "Isyana Sarasvati", "email": "isyana@test.com", "password": "123", "role": "student", "major": "Teknik Informatika", "status": "Proses Seleksi", "verificationStatus": "Pending", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-35", "fullName": "Jerome Polin", "email": "jerome@test.com", "password": "123", "role": "student", "major": "Sistem Informasi", "status": "Proses Seleksi", "verificationStatus": "Pending", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-36", "fullName": "Kaesang Pangarep", "email": "kaesang@test.com", "password": "123", "role": "student", "major": "Desain Komunikasi Visual", "status": "Proses Seleksi", "verificationStatus": "Pending", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-37", "fullName": "Lesti Kejora", "email": "lesti@test.com", "password": "123", "role": "student", "major": "Teknik Informatika", "status": "Proses Seleksi", "verificationStatus": "Pending", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-38", "fullName": "Mimi Peri", "email": "mimi@test.com", "password": "123", "role": "student", "major": "Sistem Informasi", "status": "Ditolak", "verificationStatus": "Rejected", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-39", "fullName": "Neymar Jr", "email": "neymar@test.com", "password": "123", "role": "student", "major": "Desain Komunikasi Visual", "status": "Ditolak", "verificationStatus": "Rejected", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-40", "fullName": "Onadio Leonardo", "email": "onad@test.com", "password": "123", "role": "student", "major": "Teknik Informatika", "status": "Ditolak", "verificationStatus": "Rejected", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-41", "fullName": "Pak Tarno", "email": "tarno@test.com", "password": "123", "role": "student", "major": "Sistem Informasi", "status": "Ditolak", "verificationStatus": "Rejected", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-42", "fullName": "Qorygore", "email": "qory@test.com", "password": "123", "role": "student", "major": "Desain Komunikasi Visual", "status": "Ditolak", "verificationStatus": "Rejected", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-43", "fullName": "Raffi Ahmad", "email": "raffi@test.com", "password": "123", "role": "student", "major": "Teknik Informatika", "status": "Ditolak", "verificationStatus": "Rejected", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-44", "fullName": "Spongebob", "email": "sponge@test.com", "password": "123", "role": "student", "major": "Sistem Informasi", "status": "Ditolak", "verificationStatus": "Rejected", "examStatus": "Belum Ujian", "isOnline": false
+    },
+    {
+      "id": "mhs-45", "fullName": "Taufik Hidayat", "email": "taufik@test.com", "password": "123", "role": "student", "major": "Desain Komunikasi Visual", "status": "Ditolak", "verificationStatus": "Rejected", "examStatus": "Belum Ujian", "isOnline": false
     }
   ],
   "schedules": [
