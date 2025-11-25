@@ -7,6 +7,7 @@ import RegisterPage from "./pages/auth/RegisterPage";
 
 // ================= ADMIN PAGES =================
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import LiveMonitoring from "./pages/admin/LiveMonitoring"; // ✅ FITUR BARU (CCTV)
 import ApplicantsPage from "./pages/admin/ApplicantsPage";
 import VerificationPage from "./pages/admin/VerificationPage";
 import ScheduleManagerPage from "./pages/admin/ScheduleManagerPage";
@@ -21,7 +22,7 @@ import CBTPage from "./pages/student/CBTPage";
 
 // ================= LAYOUTS =================
 import AdminLayout from "./layouts/AdminLayout";
-import StudentLayout from "./layouts/StudentLayout";   // ✅ Tambahkan layout siswa
+import StudentLayout from "./layouts/StudentLayout";
 
 export default function App() {
   return (
@@ -31,21 +32,29 @@ export default function App() {
         {/* ================= AUTH ROUTES ================= */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
 
-        {/* ================= ADMIN ROUTES WITH LAYOUT ================= */}
+        {/* ================= ADMIN ROUTES ================= */}
         <Route path="/admin/*" element={<AdminLayout />}>
+          {/* Dashboard Statistik */}
           <Route path="dashboard" element={<AdminDashboard />} />
+          
+          {/* ✅ Monitoring CCTV (Fitur WOW) */}
+          <Route path="monitoring" element={<LiveMonitoring />} />
+          
+          {/* Manajemen Data Lama */}
           <Route path="applicants" element={<ApplicantsPage />} />
           <Route path="verification" element={<VerificationPage />} />
           <Route path="schedule" element={<ScheduleManagerPage />} />
         </Route>
 
-        {/* ================= STUDENT ROUTES WITH LAYOUT ================= */}
+        {/* ================= STUDENT ROUTES ================= */}
         <Route path="/student/*" element={<StudentLayout />}>
           <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="biodata" element={<BiodataPage />} />
           <Route path="documents" element={<DocumentPage />} />
-          <Route path="exam-schedule" element={<ExamSchedulePage />} />
+          <Route path="schedule" element={<ExamSchedulePage />} /> {/* Note: Saya samakan pathnya jadi 'schedule' biar konsisten */}
+          <Route path="exam-schedule" element={<ExamSchedulePage />} /> {/* Cadangan jika link lama pakai ini */}
           <Route path="payment" element={<PaymentPage />} />
           <Route path="cbt" element={<CBTPage />} />
         </Route>

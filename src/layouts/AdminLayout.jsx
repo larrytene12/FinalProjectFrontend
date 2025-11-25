@@ -1,8 +1,7 @@
-// File: src/layouts/AdminLayout.jsx
-
 import React from 'react';
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Users, FileCheck, Calendar, LogOut } from 'lucide-react';
+// ✅ Tambahkan 'ShieldAlert' untuk ikon CCTV
+import { LayoutDashboard, Users, FileCheck, Calendar, LogOut, ShieldAlert } from 'lucide-react';
 import { APP_CONFIG } from '../config'; // Import Config
 
 const AdminLayout = () => {
@@ -17,8 +16,13 @@ const AdminLayout = () => {
     }
   };
 
+  // ✅ UPDATE DAFTAR MENU DI SINI
   const menus = [
     { name: 'Dashboard', path: '/admin/dashboard', icon: <LayoutDashboard size={20} /> },
+    
+    // Menu Baru (Fitur WOW)
+    { name: 'Live Monitoring (CCTV)', path: '/admin/monitoring', icon: <ShieldAlert size={20} /> },
+    
     { name: 'Data Pendaftar', path: '/admin/applicants', icon: <Users size={20} /> },
     { name: 'Verifikasi Berkas', path: '/admin/verification', icon: <FileCheck size={20} /> },
     { name: 'Kelola Jadwal', path: '/admin/schedules', icon: <Calendar size={20} /> }
@@ -29,14 +33,14 @@ const AdminLayout = () => {
       className="min-h-screen flex bg-cover bg-center backdrop-blur-sm relative"
       style={{ backgroundImage: `url(${APP_CONFIG.BG_IMAGE_URL})` }}
     >
-      {/* Overlay */}
+      {/* Overlay Gelap */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
 
       {/* Konten utama harus berada di atas overlay */}
       <div className="relative flex w-full h-screen font-sans">
 
-        {/* SIDEBAR */}
-        <aside className="w-64 bg-slate-900 text-white hidden md:flex flex-col shadow-xl">
+        {/* SIDEBAR ADMIN */}
+        <aside className="w-64 bg-slate-900 text-white hidden md:flex flex-col shadow-xl border-r border-slate-700">
           <div className="p-6 border-b border-slate-700 flex items-center gap-3">
             <img
               src={APP_CONFIG.LOGO_URL}
@@ -94,6 +98,7 @@ const AdminLayout = () => {
             </div>
           </header>
 
+          {/* Area Konten (Outlet) */}
           <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-8">
             <Outlet />
           </main>
