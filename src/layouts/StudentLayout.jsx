@@ -112,11 +112,14 @@ const StudentLayout = () => {
               <p className="text-sm font-bold text-gray-700">{user.fullName}</p>
               <p className="text-xs text-gray-500">{user.email}</p>
             </div>
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-[2px]">
-              <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                <User size={20} className="text-gray-600" />
-              </div>
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 p-[2px]">
+              <img 
+                 src={user.documents?.foto || `https://ui-avatars.com/api/?name=${user.fullName}&background=random`} 
+                 alt="Avatar" 
+                 className="w-full h-full rounded-full border-2 border-white object-cover"
+            />
             </div>
+
           </div>
         </header>
 

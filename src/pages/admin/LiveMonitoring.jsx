@@ -9,7 +9,7 @@ const LiveMonitoring = () => {
     const fetchData = async () => {
         try {
             // Ambil semua user yang role student
-            const res = await fetch('http://localhost:3032/users?role=student');
+            const res = await fetch('http://localhost:3033/users?role=student');
             const data = await res.json();
             setStudents(data);
         } catch (error) {
@@ -26,7 +26,7 @@ const LiveMonitoring = () => {
     if(window.confirm(`FORCE LOGOUT peserta ${name}? Tindakan ini tidak bisa dibatalkan.`)) {
         try {
             // Update status user jadi 'Diskualifikasi'
-            await fetch(`http://localhost:3032/users/${id}`, {
+            await fetch(`http://localhost:3033/users/${id}`, {
                 method: 'PATCH',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ examStatus: 'Diskualifikasi', isOnline: false })
