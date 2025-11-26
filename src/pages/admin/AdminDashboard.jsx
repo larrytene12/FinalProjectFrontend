@@ -22,9 +22,9 @@ const AdminDashboard = () => {
     setLoading(true);
     setErrorMsg('');
     
-    console.log("Memulai fetch data dari http://localhost:3032/users?role=student...");
+    console.log("Memulai fetch data dari http://localhost:3033/users?role=student...");
 
-    fetch('http://localhost:3032/users?role=student')
+    fetch('http://localhost:3033/users?role=student')
       .then(res => {
         if (!res.ok) throw new Error(`HTTP Error! Status: ${res.status}`);
         return res.json();
@@ -128,7 +128,7 @@ const AdminDashboard = () => {
           <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl shadow-sm animate-pulse">
               <div className="flex items-center gap-3 mb-2">
                   <ServerCrash className="text-red-600" size={32}/>
-                  <h3 className="text-lg font-black text-red-700">GAGAL MENGHUBUNGI SERVER (Port 3032)</h3>
+                  <h3 className="text-lg font-black text-red-700">GAGAL MENGHUBUNGI SERVER (Port 3033)</h3>
               </div>
               <p className="text-red-600 mb-4 ml-11">
                   Aplikasi tidak bisa membaca data. Kemungkinan terminal JSON Server tertutup atau belum dijalankan.
@@ -136,7 +136,7 @@ const AdminDashboard = () => {
               <div className="ml-11 bg-white p-4 rounded border border-red-200 shadow-inner">
                   <p className="text-xs font-bold text-slate-500 uppercase mb-2">Solusi: Jalankan perintah ini di terminal baru</p>
                   <code className="font-mono text-sm bg-slate-900 text-green-400 px-3 py-2 rounded block w-fit">
-                      npx json-server db.json --port 3032 --watch
+                      npx json-server db.json --port 3033 --watch
                   </code>
               </div>
           </div>
