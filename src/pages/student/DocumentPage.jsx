@@ -10,7 +10,7 @@ const DocumentPage = () => {
   const ijazahInputRef = useRef(null);
   const fotoInputRef = useRef(null);
 
-  // --- FUNGSI AJAIB: KONVERSI GAMBAR KE TEXT (BASE64) ---
+  // ---(BASE64) ---
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -24,7 +24,7 @@ const DocumentPage = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    // Validasi ukuran (max 2MB biar db.json gak meledak)
+    
     if (file.size > 2000000) {
         alert("Ukuran file terlalu besar! Maksimal 2MB.");
         return;
@@ -48,7 +48,7 @@ const DocumentPage = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
                 documents: newDocuments,
-                // Jika kedua dokumen sudah ada, otomatis naik step
+                
                 registrationStep: (newDocuments.ijazah && newDocuments.foto) ? 3 : user.registrationStep
             })
         });

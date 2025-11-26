@@ -31,7 +31,7 @@ const CBTPage = () => {
     return () => document.removeEventListener('contextmenu', handleContextMenu);
   }, []);
 
-  // --- FITUR BARU: LIVE STATUS CHECK (DETEKSI KICK/BAN DARI ADMIN) ---
+  
   useEffect(() => {
     let interval;
     if (examStatus === 'open') {
@@ -164,7 +164,7 @@ const CBTPage = () => {
 
     if(forced) alert("DISKUALIFIKASI: Sistem mendeteksi kecurangan berulang.");
     
-    await fetch(`http://localhost:3032/users/${user.id}`, { 
+    await fetch(`http://localhost:3033/users/${user.id}`, { 
         method: 'PATCH', 
         headers: { 'Content-Type': 'application/json' }, 
         body: JSON.stringify({ 
