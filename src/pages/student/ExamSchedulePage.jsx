@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, MapPin, QrCode, Download, Clock, CheckCircle, Lock, FileSearch, XCircle, AlertTriangle } from 'lucide-react';
-// CORRECTED IMPORT PATH:
+
 import Button from '../../components/ui/Button'; 
 import { useNavigate } from 'react-router-dom';
 
 const ExamSchedulePage = () => {
   const navigate = useNavigate();
   
-  // Ambil data user (Cek kedua key 'clinicUser' atau 'user' untuk kompatibilitas)
+  
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('clinicUser') || localStorage.getItem('user')));
   
   const [schedules, setSchedules] = useState([]);
   const [mySchedule, setMySchedule] = useState(null);
   
-  // STATE UNTUK PENGECEKAN AKSES
-  const [accessStatus, setAccessStatus] = useState('checking'); // checking | locked | granted
+  
+  const [accessStatus, setAccessStatus] = useState('checking'); 
   const [lockMessage, setLockMessage] = useState({ title: '', desc: '', icon: null });
 
   useEffect(() => {
@@ -55,9 +55,9 @@ const ExamSchedulePage = () => {
       return;
     }
 
-    // 4. JIKA LOLOS SEMUA -> AMBIL DATA JADWAL (PORT 3032)
+    // 4. JIKA LOLOS SEMUA -> AMBIL DATA JADWAL (PORT 3033)
     try {
-      const res = await fetch('http://localhost:3032/schedules');
+      const res = await fetch('http://localhost:3033/schedules');
       const data = await res.json();
       setSchedules(data);
       setAccessStatus('granted');
@@ -72,7 +72,7 @@ const ExamSchedulePage = () => {
       setAccessStatus('locked');
       setLockMessage({
           title: 'Gagal Terhubung Server',
-          desc: 'Pastikan JSON Server berjalan di Port 3032.',
+          desc: 'Pastikan JSON Server berjalan di Port 3033.',
           icon: <AlertTriangle size={48} className="text-red-500"/>
       });
     }
@@ -82,14 +82,14 @@ const ExamSchedulePage = () => {
     if(!window.confirm("Yakin pilih jadwal ini?")) return;
 
     try {
-        // Update Server (PORT 3032)
-        await fetch(`http://localhost:3032/users/${user.id}`, {
+        
+        await fetch(`http://localhost:3033/users/${user.id}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ scheduleId: scheduleId, registrationStep: 4 }) // Step naik ke 4
         });
         
-        await fetch(`http://localhost:3032/schedules/${scheduleId}`, {
+        await fetch(`http://localhost:3033/schedules/${scheduleId}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ filled: currentFilled + 1 })
@@ -104,7 +104,7 @@ const ExamSchedulePage = () => {
         alert("Jadwal Berhasil Dipilih!");
         window.location.reload();
     } catch (error) {
-        alert("Gagal menyimpan jadwal. Cek koneksi server (Port 3032).");
+        alert("Gagal menyimpan jadwal. Cek koneksi server (Port 3033).");
     }
   };
 

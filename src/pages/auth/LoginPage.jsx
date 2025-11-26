@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Input from '../../components/ui/Input';
-import Button from '../../components/ui/Button';
 import { LogIn } from 'lucide-react';
-import { APP_CONFIG } from '../../config'; 
+import { APP_CONFIG } from '../../config';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -16,113 +14,167 @@ const LoginPage = () => {
     setIsLoading(true);
 
     try {
-      // --- PERBAIKAN LOGIKA DI SINI ---
-      // 1. Gunakan Port 3001 (Port JSON Server kita)
-      // 2. Cari di tabel 'users' saja (karena Admin & Student sekarang jadi satu tabel)
       const res = await fetch(`http://localhost:3033/users?email=${email}&password=${password}`);
       const users = await res.json();
 
-      // 3. Cek apakah user ditemukan?
       if (users.length > 0) {
-        const user = users[0]; // Ambil data user pertama
+        const user = users[0];
 
-        // Simpan data sesi standar
         localStorage.setItem('isAuth', 'true');
         localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('role', user.role); // Penting: Simpan role asli dari DB
+        localStorage.setItem('role', user.role);
 
-        // 4. Cek Role untuk Navigasi (Admin ke Dashboard Admin, Student ke Student)
         if (user.role === 'admin') {
-            alert(`Login Admin Berhasil: ${user.fullName}`);
-            navigate('/admin/dashboard');
+          alert(`Login Admin Berhasil: ${user.fullName}`);
+          navigate('/admin/dashboard');
         } else {
-            alert(`Selamat datang, ${user.fullName}!`);
-            navigate('/student/dashboard');
+          alert(`Selamat datang, ${user.fullName}!`);
+          navigate('/student/dashboard');
         }
         return;
       }
 
-      // Jika loop selesai dan tidak ketemu
       alert("Email atau Password salah!");
-
     } catch (error) {
       console.error("Login Error:", error);
-      alert("Gagal menghubungi server database (Pastikan JSON Server jalan di port 3033).");
+      alert("Gagal menghubungi server database.");
     } finally {
       setIsLoading(false);
     }
   };
 
-  // --- BAGIAN TAMPILAN (TIDAK ADA YANG DIUBAH, SAMA PERSIS) ---
   return (
-    <div
-      className="min-h-screen flex items-center justify-center bg-cover bg-center backdrop-blur-sm relative"
-      style={{ backgroundImage: `url(${APP_CONFIG.BG_IMAGE_URL})` }}
-    >
-      {/* Overlay gelap */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div className="w-full">
 
-      <div className="relative z-10 flex w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden m-4 min-h-[600px]">
-        
-        {/* --- BAGIAN KIRI (BACKGROUND IMAGE) --- */}
-        <div 
-          className="hidden md:flex w-1/2 bg-cover bg-center items-center justify-center p-8 relative 
-          after:content-[''] after:absolute after:inset-0 after:bg-blue-900/60 after:z-0"
-          style={{ backgroundImage: `url(${APP_CONFIG.BG_IMAGE_URL})` }}
+      {/* =====================================================
+          SECTION 1 — HERO VIDEO FULLSCREEN (VIDEO PERTAMA)
+      ====================================================== */}
+      <section className="relative w-full h-screen overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         >
-          <div className="relative z-10 flex flex-col items-center text-white text-center">
-            <img 
-              src={APP_CONFIG.LOGO_URL} 
-              alt="Logo Kampus" 
-              className="w-28 h-auto mb-6 drop-shadow-lg object-contain"
-            />
-            <h2 className="text-3xl font-bold mb-2 drop-shadow-md">{APP_CONFIG.NAME}</h2>
-            <p className="opacity-90 drop-shadow-sm font-light">Sistem Penerimaan Mahasiswa Baru Online</p>
-          </div>
+          {/* VIDEO 1 */}
+          <source src="/kampus-video.mp4 .mp4" type="video/mp4" />
+        </video>
+
+        <div className="absolute inset-0 bg-black/40"></div>
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center">
+          <h1 className="text-5xl font-bold drop-shadow-lg">{APP_CONFIG.NAME}</h1>
+          <p className="text-lg opacity-80 mt-4">Scroll ke bawah untuk login</p>
+
+          <div className="mt-10 animate-bounce text-3xl opacity-70">▼</div>
         </div>
+      </section>
 
-        {/* --- BAGIAN KANAN (FORM LOGIN) --- */}
-        <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-          <div className="text-left mb-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">Selamat Datang</h2>
-            <p className="text-gray-500">Silakan login untuk mengakses akun Anda.</p>
-          </div>
+      {/* =====================================================
+          SECTION 2 — LOGIN WITH DIFFERENT VIDEO BACKGROUND
+      ====================================================== */}
+      <section className="relative w-full min-h-screen py-20 overflow-hidden">
 
-          <form onSubmit={handleLogin}>
-            <Input 
-              label="Email" 
-              type="email" 
-              placeholder="Masukkan email..."
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Input 
-              label="Password" 
-              type="password" 
-              placeholder="Masukkan password..."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+        {/* VIDEO 2 */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/kampus-video.mp4" type="video/mp4" />
+        </video>
 
-            <div className="mt-8">
-              <Button type="submit" isLoading={isLoading}>
-                <LogIn size={18} className="mr-2" /> Masuk Aplikasi
-              </Button>
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+
+        <div className="relative z-10 w-full max-w-md mx-auto px-4">
+
+          {/* Logo */}
+          <div className="text-center mb-8">
+            <div className="inline-block p-4 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 mb-6">
+              <img
+                src={APP_CONFIG.LOGO_URL}
+                alt="Logo"
+                className="w-20 h-20 object-contain mx-auto"
+              />
             </div>
-          </form>
 
-          <div className="mt-6 text-center pt-6 border-t border-gray-100">
-            <p className="text-sm text-gray-600">
-              Belum punya akun mahasiswa? <br />
-              <Link to="/register" className="text-blue-600 font-bold hover:underline text-base">
-                Daftar Akun Baru
-              </Link>
+            <h1 className="text-4xl font-bold text-white mb-2">{APP_CONFIG.NAME}</h1>
+
+            <p className="text-white/90 font-light text-sm tracking-wide">
+              Sistem Penerimaan Mahasiswa Baru Online
             </p>
           </div>
+
+          {/* Login Card */}
+          <div className="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 p-8 shadow-xl">
+            <div className="mb-8">
+              <h2 className="text-2xl font-bold text-white mb-2">Selamat Datang</h2>
+              <p className="text-white/80 text-sm">Silakan login ke akun Anda.</p>
+            </div>
+
+            <form onSubmit={handleLogin} className="space-y-5">
+              {/* Email */}
+              <div>
+                <label className="block text-white text-sm mb-1">Email</label>
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="nama@email.com"
+                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+              </div>
+
+              {/* Password */}
+              <div>
+                <label className="block text-white text-sm mb-1">Password</label>
+                <input
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50"
+                />
+              </div>
+
+              {/* Button */}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full mt-6 px-6 py-3 bg-white text-blue-600 rounded-xl font-semibold shadow-lg hover:scale-105 transition-all flex items-center justify-center space-x-2 disabled:opacity-50"
+              >
+                {isLoading ? (
+                  <span>Memproses...</span>
+                ) : (
+                  <>
+                    <LogIn size={20} />
+                    <span>Masuk Aplikasi</span>
+                  </>
+                )}
+              </button>
+            </form>
+
+            {/* Register */}
+            <div className="mt-6 text-center pt-6 border-t border-white/20">
+              <p className="text-white/80 text-sm">Belum punya akun?</p>
+
+              <Link to="/register" className="text-white font-bold hover:underline">
+                Daftar Akun Baru →
+              </Link>
+            </div>
+          </div>
+
+          <p className="text-center text-white/60 text-xs mt-6">
+            © 2024 {APP_CONFIG.NAME}. All rights reserved.
+          </p>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 };
