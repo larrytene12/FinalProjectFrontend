@@ -17,7 +17,6 @@ const AdminDashboard = () => {
   const [majorData, setMajorData] = useState([]);
   const [statusData, setStatusData] = useState([]);
 
-  // Fungsi Fetch Data terpisah agar bisa dipanggil ulang (Refresh)
   const loadData = () => {
     setLoading(true);
     setErrorMsg('');
@@ -41,7 +40,7 @@ const AdminDashboard = () => {
         const rejected = data.filter(u => ['ditolak', 'tidak lulus', 'rejected'].includes((u.status || '').toLowerCase())).length;
         const pending = data.length - accepted - rejected;
 
-        // 2. Hitung Status Verifikasi
+        
         const verified = data.filter(u => (u.verificationStatus || '').toLowerCase() === 'verified').length;
         const rejectedVerif = data.filter(u => (u.verificationStatus || '').toLowerCase() === 'rejected').length;
         const pendingVerif = data.length - verified - rejectedVerif;
@@ -52,7 +51,6 @@ const AdminDashboard = () => {
           accepted, rejected, pending
         });
 
-        // 3. Grafik Jurusan
         const majorCounts = data.reduce((acc, curr) => {
           const key = curr.major || 'Lainnya';
           acc[key] = (acc[key] || 0) + 1;
